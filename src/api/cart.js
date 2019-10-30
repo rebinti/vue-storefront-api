@@ -212,6 +212,13 @@ export default ({ config, db }) => {
 			apiError(res, err);
 		})
 	})
-
+	cartApi.get('/getmyview', (req, res) => {
+		const cartProxy = _getProxy(req)
+		cartProxy.getmyview(req.query.token).then((result) => {
+			apiStatus(res, result, 200);
+		}).catch(err => {
+			apiError(res, err);
+		})
+	})
 	return cartApi
 }

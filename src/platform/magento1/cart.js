@@ -43,6 +43,9 @@ class CartProxy extends AbstractCartProxy {
   getCoupon (customerToken, cartId) {
     return this.api.cart.getCoupon(customerToken, cartId);
   }
+  getmyview(customerToken) {
+    return this.api.cart.getmyview(customerToken);
+  }
 }
 
 module.exports = CartProxy;

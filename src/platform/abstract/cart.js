@@ -31,6 +31,8 @@ class AbstractCartProxy {
 
   totals (customerToken, cartId, params) {
   }
+  getmyview (customerToken) {
+  }
 }
 
 module.exports = AbstractCartProxy
