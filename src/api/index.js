@@ -8,7 +8,7 @@ import review from './review';
 import cart from './cart';
 import product from './product';
 import sync from './sync';
-import stocknotification from './stocknotification'
+import istocknotification from './stocknotification'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -37,7 +37,7 @@ export default ({ config, db }) => {
 	// mount the sync resource
 	api.use('/sync', sync({ config, db }))
 	
-	api.use('/stocknotification', stocknotification({ config, db }))
+	api.use('/urlstocknotification', istocknotification({ config, db }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {

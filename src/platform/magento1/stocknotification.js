@@ -8,7 +8,7 @@ class StockNotificationProxy extends AbstractStockNotificationProxy {
     this.api = Magento1Client(multiStoreConfig(config.magento1.api, req));
   }
   notification (data) {
-    return this.api.stocknotification.notification(data);
+    return this.api.mstocknotification.moutofstocknotification(data);
   }
 }
 

@@ -17,7 +17,7 @@ export default ({ config, db }) => {
 	/**
 	 * GET get stock item
 	 */
-	api.post('/notification', (req, res) => {
+	api.post('/urlnotification', (req, res) => {
         // console.log('here',req);
 		const stockProxy = _getProxy(req);
 		// const stockProxy = _getProxy(req);
