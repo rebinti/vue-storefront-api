@@ -9,6 +9,7 @@ import cart from './cart';
 import product from './product';
 import sync from './sync';
 import istocknotification from './stocknotification'
+import iaddtowishlist from './addtowishlist'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -38,6 +39,8 @@ export default ({ config, db }) => {
 	api.use('/sync', sync({ config, db }))
 	
 	api.use('/urlstocknotification', istocknotification({ config, db }))
+
+	api.use('/urladdtowishlist', iaddtowishlist({ config, db }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
