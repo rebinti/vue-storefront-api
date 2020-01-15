@@ -10,6 +10,7 @@ import product from './product';
 import sync from './sync';
 import istocknotification from './stocknotification'
 import iaddtowishlist from './addtowishlist'
+import iaddtoboard from './addtoboard'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -41,6 +42,8 @@ export default ({ config, db }) => {
 	api.use('/urlstocknotification', istocknotification({ config, db }))
 
 	api.use('/urladdtowishlist', iaddtowishlist({ config, db }))
+
+	api.use('/urladdtoboard', iaddtoboard({ config, db }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
