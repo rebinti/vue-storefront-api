@@ -58,7 +58,9 @@ class AbstractUserProxy {
   login (userData) { 
       throw new Error('UserProxy::login must be implemented for specific platform')
   }
-
+  socialemaillogin (userData) { 
+    throw new Error('UserProxy::socialemaillogin must be implemented for specific platform')
+  }
   /**
    * EXAMPLE INPUT:
    * - just provide an consumer token from login method

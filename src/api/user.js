@@ -82,6 +82,26 @@ export default ({config, db}) => {
 			apiError(res, err);
 		})
 	});
+	userApi.post('/socialemaillogin', (req, res) => {
+		const userProxy = _getProxy(req)
+
+		userProxy.socialemaillogin(req.body).then((result) => {
+			/**
+			 * Second request for more user info
+			 */
+			if (config.usePriceTiers) {
+				userProxy.me(result).then((resultMe) => {
+					apiStatus(res, result, 200, {refreshToken: encryptToken(jwt.encode(req.body, config.authHashSecret ? config.authHashSecret : config.objHashSecret), config.authHashSecret ? config.authHashSecret : config.objHashSecret)});
+				}).catch(err => {
+					apiError(res, err);
+				})
+			} else {
+				apiStatus(res, result, 200, {refreshToken: encryptToken(jwt.encode(req.body, config.authHashSecret ? config.authHashSecret : config.objHashSecret), config.authHashSecret ? config.authHashSecret : config.objHashSecret)});
+			}
+		}).catch(err => {
+			apiError(res, err);
+		})
+	});	
 	/**
 	 * Check social email exist
 	 */

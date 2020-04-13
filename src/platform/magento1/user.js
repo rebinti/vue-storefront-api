@@ -13,6 +13,9 @@ class UserProxy extends AbstractUserProxy {
   login (userData) {
     return this.api.user.login(userData)
   }
+  socialemaillogin (userData) {
+    return this.api.user.socialemaillogin(userData)
+  }  
   socialemailexist (userData) {
     return this.api.user.socialemailexist(userData)
   }  
