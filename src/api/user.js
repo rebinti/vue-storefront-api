@@ -82,7 +82,31 @@ export default ({config, db}) => {
 			apiError(res, err);
 		})
 	});
+	/**
+	 * Check social email exist
+	 */
+	userApi.post('/socialemailexist', (req, res) => {
+		const userProxy = _getProxy(req)
+		userProxy.socialemailexist(req.body).then((result) => {
+			apiStatus(res, result, 200);
+		}).catch(err => {
+			apiError(res, err, 500);
+		})		
+	});	
 
+	userApi.post('/social-emailexit', (req, res) => {
+		const userProxy = _getProxy(req)
+	
+		if(!req.body.email) {
+		  return apiStatus(res, "Invalid e-mail provided!", 500)
+		}
+	
+		userProxy.socialEmailexit({ email: req.body.email, template: "email_reset", websiteId: 1 }).then((result) => {
+		  apiStatus(res, result, 200);
+		}).catch(err=> {
+			apiError(res, err);
+		})
+	  });	
 	/**
 	 * POST refresh user token
 	 */

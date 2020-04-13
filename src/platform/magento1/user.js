@@ -13,6 +13,9 @@ class UserProxy extends AbstractUserProxy {
   login (userData) {
     return this.api.user.login(userData)
   }
+  socialemailexist (userData) {
+    return this.api.user.socialemailexist(userData)
+  }  
   me (customerToken) {
     return this.api.user.me(customerToken)
   }
@@ -28,6 +31,9 @@ class UserProxy extends AbstractUserProxy {
   resetPassword (emailData) {
     return this.api.user.resetPassword(emailData)
   }
+  socialEmailexit (emailData) {
+    return this.api.user.socialEmailexit(emailData)
+  }  
   update (userData) {
     return this.api.user.update(userData)
   }

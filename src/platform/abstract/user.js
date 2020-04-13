@@ -85,6 +85,9 @@ class AbstractUserProxy {
    * 
    * } requestToken 
    */
+  socialemailexist (userData) {
+    throw new Error('UserProxy::socialemailexist must be implemented for specific platform')
+  }
   me (requestToken) {
     throw new Error('UserProxy::me must be implemented for specific platform')
   }
@@ -94,6 +97,9 @@ class AbstractUserProxy {
   resetPassword (emailData) {
     throw new Error('UserProxy::resetPassword must be implemented for specific platform')
   }
+  socialEmailexit (emailData) {
+    throw new Error('UserProxy::resetPassword must be implemented for specific platform')
+  }  
 }
 
 export default AbstractUserProxy
