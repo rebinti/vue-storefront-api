@@ -56,6 +56,21 @@ class Slice {
           itemContent += `</div>`
 
           return itemContent
+
+        case 'vue-home-6banner':
+          let homeContent =`<div class="row gutter-md">`
+          // console.log('slice data', JSON.stringify(slice))
+          let homeimageList = slice.items.map(function(item) {
+            return (`<div class="col-6 sm:col-4 pb-5">
+                        <div class="tile">
+                           <img src="${item.image.url}" >
+                      </div>
+                      </div>`)
+          })
+          homeContent += homeimageList.join('\n')
+          homeContent += `</div>`
+
+          return homeContent
       }
     })
 

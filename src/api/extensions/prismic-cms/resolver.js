@@ -6,6 +6,7 @@ import Slice from './helpers/slice'
 const apiEndpoint = config.prismic.baseUrl
 let cmsBlockType = (typeof config.prismic.cmsBlockEntityType !== 'undefined') ? config.prismic.cmsBlockEntityType : 'cms-block'
 let cmsPageType = (typeof config.prismic.cmsPageEntityType !== 'undefined') ? config.prismic.cmsPageEntityType : 'cms-page'
+let homePageType = (typeof config.prismic.homePageEntityType !== 'undefined') ? config.prismic.homePageEntityType : 'vue_home_6_banner'
 
 const resolver = {
   Query: {
@@ -17,6 +18,11 @@ const resolver = {
     prismicCmsPages: () => {
       return Prismic.getApi(apiEndpoint).then((api) => {
         return api.query(Prismic.Predicates.at('document.type', cmsPageType))
+      }).then(response => response.results)
+    },
+    prismicHomePages: () => {
+      return Prismic.getApi(apiEndpoint).then((api) => {
+        return api.query(Prismic.Predicates.at('document.type', homePageType))
       }).then(response => response.results)
     },
   },
@@ -50,6 +56,21 @@ const resolver = {
     content: parent => {
       const { data } = parent
       return Slice.parse(data.body)
+    },
+    creation_time: parent => {
+      return parent.first_publication_date
+    },
+    update_time: parent => {
+      return parent.last_publication_date
+    }
+  },
+  PrismicHomePage: {
+    identifier: parent => {
+      return parent.uid
+    },
+    content: parent => {
+      const { data } = parent
+       return Slice.parse(data.body)
     },
     creation_time: parent => {
       return parent.first_publication_date

@@ -1,6 +1,7 @@
 type Query {
     prismicCmsBlocks: [PrismicCmsBlock]!
     prismicCmsPages: [PrismicCmsPage]!
+   prismicHomePages: [PrismicHomePage]!
 }
 
 type PrismicCmsBlock {
@@ -17,6 +18,15 @@ type PrismicCmsPage {
     id: String!
     slug: String!
     title: String!
+    content: String!
+    lang: String!
+    creation_time: String!
+    update_time: String!
+}
+
+type PrismicHomePage {
+    id: String!
+    identifier: String!
     content: String!
     lang: String!
     creation_time: String!
