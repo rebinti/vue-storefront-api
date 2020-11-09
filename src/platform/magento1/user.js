@@ -34,6 +34,9 @@ class UserProxy extends AbstractUserProxy {
   resetPassword (emailData) {
     return this.api.user.resetPassword(emailData)
   }
+  resetPasswordPost (passwordData) {
+    return this.api.user.resetPasswordPost(passwordData)
+  }  
   socialEmailexit (emailData) {
     return this.api.user.socialEmailexit(emailData)
   }  

@@ -188,6 +188,23 @@ export default ({config, db}) => {
   });
 
   /**
+   * POST resetPasswordPost // rebi - 9 - 11 - 2020
+   */
+  userApi.post('/reset-password-post', (req, res) => {
+    const userProxy = _getProxy(req)
+
+    if(!req.body.password) {
+      return apiStatus(res, "Invalid password provided!", 500)
+    }
+
+    userProxy.resetPasswordPost({ password: req.body.password,confirmation:req.body.password-confirm,token:'example-token',id:23233, template: "email_reset", websiteId: 1 }).then((result) => {
+      apiStatus(res, result, 200);
+    }).catch(err=> {
+		apiError(res, err);
+    })
+  });  
+
+  /**
 	 * GET  an user
 	 */
 	userApi.get('/me', (req, res) => {

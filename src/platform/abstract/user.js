@@ -99,6 +99,9 @@ class AbstractUserProxy {
   resetPassword (emailData) {
     throw new Error('UserProxy::resetPassword must be implemented for specific platform')
   }
+  resetPasswordPost (passwordData) {
+    throw new Error('UserProxy::resetPassword must be implemented for specific platform')
+  }  
   socialEmailexit (emailData) {
     throw new Error('UserProxy::resetPassword must be implemented for specific platform')
   }  
