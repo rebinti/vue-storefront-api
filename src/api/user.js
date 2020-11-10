@@ -192,14 +192,16 @@ export default ({config, db}) => {
    */
   userApi.post('/reset-password-post', (req, res) => {
     const userProxy = _getProxy(req)
-    console.log("TESTTTTTTTTTTTTTTTTTTT",req.body);	
-      console.log("TESTTTTTTTTTTTTTTTTTTT222",req.body.password);
+		console.log("TESTTTTTTTTTTTTTTTTTTT222",req.body.password);
+		console.log("TESTTTTTTTTTTTTTTTTTTT333",req.body.confirmation);
+		console.log("TESTTTTTTTTTTTTTTTTTTT444",req.body.token);
+		console.log("TESTTTTTTTTTTTTTTTTTTT555",req.body.id);
     if(!req.body.password) {
 	
       return apiStatus(res, "Invalid password provided!!!!!!!", 500)
     }
 
-    userProxy.resetPasswordPost({ password: req.body.password, template: "email_reset", websiteId: 1 }).then((result) => {
+    userProxy.resetPasswordPost({ password: req.body.password, confirmation: req.body.confirmation, token: req.body.token, id: req.body.id, template: "email_reset", websiteId: 1 }).then((result) => {
       apiStatus(res, result, 200);
     }).catch(err=> {
 		apiError(res, err);
