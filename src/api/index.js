@@ -12,6 +12,7 @@ import istocknotification from './stocknotification'
 import iorderdetails from './orderdetails'
 import iaddtowishlist from './addtowishlist'
 import iaddtoboard from './addtoboard'
+import icontactus from './contactus'
 
 export default ({ config, db }) => {
 	let api = Router();
@@ -47,6 +48,8 @@ export default ({ config, db }) => {
 	api.use('/urladdtowishlist', iaddtowishlist({ config, db }))
 
 	api.use('/urladdtoboard', iaddtoboard({ config, db }))
+
+	api.use('/urlcontactus', icontactus({ config, db }))
 
 	// perhaps expose some API metadata at the root
 	api.get('/', (req, res) => {
