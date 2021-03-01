@@ -9,6 +9,7 @@ import cart from './cart';
 import product from './product';
 import sync from './sync';
 import istocknotification from './stocknotification'
+import inewslettersubscribe from './newslettersubscribe'
 import iorderdetails from './orderdetails'
 import iaddtowishlist from './addtowishlist'
 import iaddtoboard from './addtoboard'
@@ -42,6 +43,8 @@ export default ({ config, db }) => {
 	api.use('/sync', sync({ config, db }))
 	
 	api.use('/urlstocknotification', istocknotification({ config, db }))
+
+	api.use('/urlnewslettersubscribe', inewslettersubscribe({ config, db }))
 
 	api.use('/urlorderdetails', iorderdetails({ config, db }))
 
