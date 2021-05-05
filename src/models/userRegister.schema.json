@@ -25,7 +25,7 @@
                     "pattern": "[a-zA-Z]+"
                 },
                 "addresses": {
-                    "maxItems": 2,
+                    "maxItems": 5,
                     "items": {
                         "required": [
                             "firstname",

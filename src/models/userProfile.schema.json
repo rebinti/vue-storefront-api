@@ -26,7 +26,7 @@
                     "type": "integer"
                 },
                 "addresses": {
-                    "maxItems": 2,
+                    "maxItems": 5,
                     "items": {
                         "required": [
                             "firstname",
